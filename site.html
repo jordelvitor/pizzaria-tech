@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Pizzaria Tech</title>
+  <style>
+    body {
+      background-color: #FF5C00;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      margin-top: 30px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-weight: 400;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: justify;
+      background-color: #ffffff20;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      display: block;
+      margin: 30px auto 20px auto;
+    }
+
+    video {
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    button {
+      background-color: #fff;
+      color: #FF5C00;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 20px auto;
+      display: block;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #ffe3d1;
+      transform: scale(1.05);
+    }
+
+    button a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    blockquote {
+      border-left: 4px solid #fff;
+      padding-left: 10px;
+      color: #fefefe;
+      font-style: italic;
+      margin: 15px 0;
+    }
+
+    ul {
+      margin: 10px 0 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🍕 Pizzaria Tech</h1>
+    <h2>Seja bem-vindo à nossa Pizzaria!</h2>
+  </header>
+
+  <img src="pizza.png" alt="Logo da Pizzaria Tech">
+
+  <div class="container">
+    <h2>🍕 Sabor e Inovação no Mesmo Forno</h2>
+
+    <p>
+      A <strong>Pizzaria Tech</strong> nasceu da união entre a tradição da gastronomia italiana e a modernidade da tecnologia. Mais do que uma pizzaria, somos um conceito inovador de experiência gastronômica.
+    </p>
+
+    <p>
+      Fundada com o propósito de transformar a forma como as pessoas consomem pizza, a Pizzaria Tech oferece um cardápio exclusivo, preparado com ingredientes selecionados e receitas originais.
+    </p>
+
+    <h2>🔧 Inovação em cada fatia</h2>
+
+    <p>Nosso sistema permite que você:</p>
+    <ul>
+      <li>Monte sua pizza personalizada em segundos;</li>
+      <li>Acompanhe seu pedido em tempo real;</li>
+      <li>Receba sugestões baseadas no seu gosto;</li>
+      <li>Pague com segurança e rapidez via diversos meios digitais.</li>
+    </ul>
+
+    <h2>🌱 Compromisso com o futuro</h2>
+    <p>Usamos embalagens recicláveis e tecnologias de baixo impacto ambiental.</p>
+
+    <h2>📍 Onde estamos</h2>
+    <p>A Pizzaria Tech já conquistou centenas de clientes e está em expansão. Venha conhecer!</p>
+
+    <blockquote>
+      <strong>Pizzaria Tech</strong> — onde tradição e tecnologia se encontram para oferecer muito mais que uma refeição.
+    </blockquote>
+  </div>
+
+   <video width="400" height="250" autoplay muted loop>
+    <source src="apresentacao.mp4" type="video/mp4">
+    Seu navegador não suporta vídeos.
+  </video>
+  <button><a href="cardapio.html">🍕 Nosso Cardápio</a></button>
+  <audio id="musicaFundo" autoplay loop muted>
+    <source src="musica.mp3" type="audio/mpeg">
+    seu navegador não suporta áudio
+  </audio>
+
+  <script>
+    document.body.addEventListener("click", () => {
+      const audio = document.getElementById("musicaFundo");
+      audio.muted = false;
+      audio.play();
+    });
+  </script>
+
+</body>
+</html>
