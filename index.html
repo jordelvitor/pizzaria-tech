@@ -1,151 +1,318 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Pizzaria Tech</title>
-  <style>
-    body {
-      background-color: #FF5C00;
-      font-family: Arial, sans-serif;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Tech - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    header {
-      margin-top: 30px;
-    }
+        body {
+            background: linear-gradient(135deg, #FF5C00, #FF8C42);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-    h1 {
-      font-size: 36px;
-      margin-bottom: 5px;
-    }
+        .container {
+            display: flex;
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
 
-    h2 {
-      margin-top: 0;
-      font-weight: 400;
-    }
+        .welcome-section {
+            flex: 1;
+            background: linear-gradient(rgba(255, 92, 0, 0.9), rgba(255, 140, 66, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23FF5C00"/><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="none" stroke="white" stroke-width="2"/><circle cx="50" cy="50" r="15" fill="none" stroke="white" stroke-width="2"/></svg>');
+            background-size: cover;
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: justify;
-      background-color: #ffffff20;
-      padding: 20px;
-      border-radius: 10px;
-    }
+        .welcome-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
 
-    img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      display: block;
-      margin: 30px auto 20px auto;
-    }
+        .welcome-section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
 
-    video {
-      display: block;
-      margin: 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
+        .pizza-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+        }
 
-    button {
-      background-color: #fff;
-      color: #FF5C00;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      margin: 20px auto;
-      display: block;
-      transition: 0.3s;
-    }
+        .login-section {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-    button:hover {
-      background-color: #ffe3d1;
-      transform: scale(1.05);
-    }
+        .login-section h2 {
+            color: #FF5C00;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
-    button a {
-      text-decoration: none;
-      color: inherit;
-    }
+        .login-section p {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-    blockquote {
-      border-left: 4px solid #fff;
-      padding-left: 10px;
-      color: #fefefe;
-      font-style: italic;
-      margin: 15px 0;
-    }
+        .login-form {
+            width: 100%;
+        }
 
-    ul {
-      margin: 10px 0 10px 20px;
-    }
-  </style>
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #FF5C00;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 92, 0, 0.2);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: #FF5C00;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background: #E65100;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 92, 0, 0.3);
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .login-options a {
+            color: #FF5C00;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .login-options a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+        }
+
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .divider span {
+            padding: 0 15px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-btn.google {
+            color: #DB4437;
+        }
+
+        .social-btn.facebook {
+            color: #4267B2;
+        }
+
+        .social-btn.apple {
+            color: #000;
+        }
+
+        .guest-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .guest-link a {
+            color: #FF5C00;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .guest-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .welcome-section {
+                padding: 30px 20px;
+            }
+            
+            .login-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="welcome-section">
+            <div class="pizza-icon">🍕</div>
+            <h1>Pizzaria Tech</h1>
+            <p>Onde tradição e tecnologia se encontram para oferecer muito mais que uma refeição.</p>
+            <p>Faça login para acessar nosso cardápio exclusivo, personalizar sua pizza e acompanhar seu pedido em tempo real.</p>
+        </div>
+        
+        <div class="login-section">
+            <h2>Faça seu Login</h2>
+            <p>Entre com sua conta para continuar</p>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="seu@email.com" value="jordel@gmail.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="Sua senha" required>
+                </div>
+                
+                <button type="submit" class="login-btn">Entrar</button>
+                
+                <div class="login-options">
+                    <a href="#">Esqueci minha senha</a>
+                    <a href="#">Criar conta</a>
+                </div>
+                
+                <div class="divider">
+                    <span>ou</span>
+                </div>
+                
+                <div class="social-login">
+                    <div class="social-btn google">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/>
+                        </svg>
+                    </div>
+                    <div class="social-btn facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                        </svg>
+                    </div>
+                    <div class="social-btn apple">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701z"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="guest-link">
+                    <a href="home.html">Continuar como visitante</a>
+                </div>
+            </form>
+        </div>
+    </div>
 
-  <header>
-    <h1>🍕 Pizzaria Tech</h1>
-    <h2>Seja bem-vindo à nossa Pizzaria!</h2>
-  </header>
-
-  <img src="pizza.png" alt="Logo da Pizzaria Tech">
-
-  <div class="container">
-    <h2>🍕 Sabor e Inovação no Mesmo Forno</h2>
-
-    <p>
-      A <strong>Pizzaria Tech</strong> nasceu da união entre a tradição da gastronomia italiana e a modernidade da tecnologia. Mais do que uma pizzaria, somos um conceito inovador de experiência gastronômica.
-    </p>
-
-    <p>
-      Fundada com o propósito de transformar a forma como as pessoas consomem pizza, a Pizzaria Tech oferece um cardápio exclusivo, preparado com ingredientes selecionados e receitas originais.
-    </p>
-
-    <h2>🔧 Inovação em cada fatia</h2>
-
-    <p>Nosso sistema permite que você:</p>
-    <ul>
-      <li>Monte sua pizza personalizada em segundos;</li>
-      <li>Acompanhe seu pedido em tempo real;</li>
-      <li>Receba sugestões baseadas no seu gosto;</li>
-      <li>Pague com segurança e rapidez via diversos meios digitais.</li>
-    </ul>
-
-    <h2>🌱 Compromisso com o futuro</h2>
-    <p>Usamos embalagens recicláveis e tecnologias de baixo impacto ambiental.</p>
-
-    <h2>📍 Onde estamos</h2>
-    <p>A Pizzaria Tech já conquistou centenas de clientes e está em expansão. Venha conhecer!</p>
-
-    <blockquote>
-      <strong>Pizzaria Tech</strong> — onde tradição e tecnologia se encontram para oferecer muito mais que uma refeição.
-    </blockquote>
-  </div>
-
-   <video width="400" height="250" autoplay muted loop>
-    <source src="apresentacao.mp4" type="video/mp4">
-    Seu navegador não suporta vídeos.
-  </video>
-  <button><a href="cardapio.html">🍕 Nosso Cardápio</a></button>
-  <audio id="musicaFundo" autoplay loop muted>
-    <source src="musica.mp3" type="audio/mpeg">
-    seu navegador não suporta áudio
-  </audio>
-
-  <script>
-    document.body.addEventListener("click", () => {
-      const audio = document.getElementById("musicaFundo");
-      audio.muted = false;
-      audio.play();
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        // Simulação de autenticação
+        if (email && password) {
+            // Em um sistema real, aqui seria feita a validação com o backend
+            alert('Login realizado com sucesso! Redirecionando...');
+            
+            // CORREÇÃO: Redireciona para a página HOME (página principal do site)
+            setTimeout(() => {
+                window.location.href = 'home.html'; // ← AGORA REDIRECIONA PARA A PÁGINA CERTA
+            }, 1000);
+        } else {
+            alert('Por favor, preencha todos os campos.');
+        }
     });
-  </script>
-
+</script>
 </body>
 </html>

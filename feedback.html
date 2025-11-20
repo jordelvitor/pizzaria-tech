@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Tech - Feedback</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FF5C00, #FF8C42);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            background: linear-gradient(rgba(255, 92, 0, 0.9), rgba(255, 140, 66, 0.9));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .pizza-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .feedback-form {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: #FF5C00;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 92, 0, 0.2);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .rating-section {
+            margin: 25px 0;
+        }
+
+        .rating-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .rating-options {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .rating-item {
+            flex: 1;
+            text-align: center;
+        }
+
+        .rating-input {
+            display: none;
+        }
+
+        .rating-label {
+            display: block;
+            padding: 15px 10px;
+            background: #f8f8f8;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .rating-input:checked + .rating-label {
+            background: #FF5C00;
+            color: white;
+            border-color: #FF5C00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 92, 0, 0.3);
+        }
+
+        .rating-label:hover {
+            border-color: #FF5C00;
+            transform: translateY(-2px);
+        }
+
+        .stars {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .rating-text {
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: #FF5C00;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: #E65100;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 92, 0, 0.3);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #FF5C00;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+            transform: translateX(-5px);
+        }
+
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .feedback-form {
+                padding: 20px;
+            }
+            
+            .rating-options {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-group {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="pizza-icon">🍕</div>
+            <h1>Pizzaria Tech</h1>
+            <p>Sua opinião é muito importante para nós!</p>
+        </div>
+        
+        <form class="feedback-form" id="feedbackForm">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            </div>
+            
+            <div class="rating-section">
+                <div class="rating-title">Avalie nosso site:</div>
+                <div class="rating-options">
+                    <div class="rating-item">
+                        <input type="radio" id="site-1" name="avaliacao-site" value="1" class="rating-input" required>
+                        <label for="site-1" class="rating-label">
+                            <div class="stars">⭐</div>
+                            <div class="rating-text">Ruim</div>
+                        </label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="site-2" name="avaliacao-site" value="2" class="rating-input">
+                        <label for="site-2" class="rating-label">
+                            <div class="stars">⭐⭐</div>
+                            <div class="rating-text">Regular</div>
+                        </label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="site-3" name="avaliacao-site" value="3" class="rating-input">
+                        <label for="site-3" class="rating-label">
+                            <div class="stars">⭐⭐⭐</div>
+                            <div class="rating-text">Bom</div>
+                        </label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="site-4" name="avaliacao-site" value="4" class="rating-input">
+                        <label for="site-4" class="rating-label">
+                            <div class="stars">⭐⭐⭐⭐</div>
+                            <div class="rating-text">Muito Bom</div>
+                        </label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="site-5" name="avaliacao-site" value="5" class="rating-input">
+                        <label for="site-5" class="rating-label">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-text">Excelente</div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rating-section">
+                <div class="rating-title">Avalie nosso atendimento:</div>
+                <div class="rating-options">
+                    <div class="rating-item">
+                        <input type="radio" id="atendimento-1" name="avaliacao-atendimento" value="1" class="rating-input" required>
+                        <label for="atendimento-1" class="rating-label">
+                            <div class="stars">⭐</div>
+                            <div class="rating-text">Ruim</div>
+                        </label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="atendimento-2" name="avaliacao-atendimento" value="2" class="rating-input">
+                        <label for="atendimento-2" class="rating-label">
+                            <div class="stars">⭐⭐</div>
+                            <div class="rating-text">Regular</div>
+                        </label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="atendimento-3" name="avaliacao-atendimento" value="3" class="rating-input">
+                        <label for="atendimento-3" class="rating-label">
+                            <div class="stars">⭐⭐⭐</div>
+                            <div class="rating-text">Bom</div>
+                        </label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="atendimento-4" name="avaliacao-atendimento" value="4" class="rating-input">
+                        <label for="atendimento-4" class="rating-label">
+                            <div class="stars">⭐⭐⭐⭐</div>
+                            <div class="rating-text">Muito Bom</div>
+                        </label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="atendimento-5" name="avaliacao-atendimento" value="5" class="rating-input">
+                        <label for="atendimento-5" class="rating-label">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-text">Excelente</div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="comentarios">Comentários adicionais:</label>
+                <textarea id="comentarios" name="comentarios" placeholder="Conte-nos mais sobre sua experiência... O que mais gostou? O que podemos melhorar?"></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Enviar Feedback</button>
+            
+            <div class="success-message" id="successMessage">
+                <h3>Obrigado pelo seu feedback! 🎉</h3>
+                <p>Sua opinião é muito importante para continuarmos melhorando.</p>
+            </div>
+            
+            <div class="back-link">
+                <a href="home.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                    </svg>
+                    Voltar para a Página Principal
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coletar dados do formulário
+            const formData = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                avaliacaoSite: document.querySelector('input[name="avaliacao-site"]:checked').value,
+                avaliacaoAtendimento: document.querySelector('input[name="avaliacao-atendimento"]:checked').value,
+                comentarios: document.getElementById('comentarios').value
+            };
+            
+            // Simular envio do feedback
+            console.log('Feedback enviado:', formData);
+            
+            // Mostrar mensagem de sucesso
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            // Limpar formulário
+            this.reset();
+            
+            // Opcional: Redirecionar após alguns segundos
+            setTimeout(() => {
+                // window.location.href = 'index.html'; // Descomente se quiser redirecionar automaticamente
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
